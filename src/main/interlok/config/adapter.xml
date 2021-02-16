@@ -1,0 +1,137 @@
+<adapter>
+  <unique-id>excel-testing</unique-id>
+  <start-up-event-imp>com.adaptris.core.event.StandardAdapterStartUpEvent</start-up-event-imp>
+  <heartbeat-event-imp>com.adaptris.core.HeartbeatEvent</heartbeat-event-imp>
+  <shared-components>
+    <connections/>
+    <services/>
+  </shared-components>
+  <event-handler class="default-event-handler">
+    <unique-id>DefaultEventHandler</unique-id>
+    <connection class="null-connection">
+      <unique-id>agitated-einstein</unique-id>
+    </connection>
+    <producer class="null-message-producer">
+      <unique-id>romantic-bartik</unique-id>
+    </producer>
+  </event-handler>
+  <message-error-handler class="null-processing-exception-handler">
+    <unique-id>silly-dijkstra</unique-id>
+  </message-error-handler>
+  <failed-message-retrier class="no-retries">
+    <unique-id>jolly-ptolemy</unique-id>
+  </failed-message-retrier>
+  <channel-list>
+    <channel>
+      <consume-connection class="null-connection">
+        <unique-id>null-conn</unique-id>
+      </consume-connection>
+      <produce-connection class="null-connection">
+        <unique-id>null-conn</unique-id>
+      </produce-connection>
+      <workflow-list>
+        <standard-workflow>
+          <consumer class="fs-consumer">
+            <unique-id>excel-in</unique-id>
+            <poller class="fixed-interval-poller">
+              <poll-interval>
+                <unit>SECONDS</unit>
+                <interval>20</interval>
+              </poll-interval>
+            </poller>
+            <create-dirs>true</create-dirs>
+            <log-all-exceptions>true</log-all-exceptions>
+            <file-sorter class="fs-sort-none"/>
+            <base-directory-url>file://localhost/./messages/excel-in/</base-directory-url>
+            <wip-suffix>.wip</wip-suffix>
+          </consumer>
+          <service-collection class="service-list">
+            <unique-id>romantic-blackwell</unique-id>
+            <services>
+              <excel-to-xml-service>
+                <unique-id>excel-to-XML</unique-id>
+                <xml-style>
+                  <date-format>yyyy-MM-dd&apos;T&apos;HH:mm:ssZ</date-format>
+                  <element-naming-style>HEADER_ROW</element-naming-style>
+                </xml-style>
+                <ignore-null-rows>true</ignore-null-rows>
+              </excel-to-xml-service>
+              <json-xml-transform-service>
+                <unique-id>xml-to-json</unique-id>
+                <direction>XML_TO_JSON</direction>
+                <driver class="json-safe-transformation-driver">
+                  <root-name>tickets</root-name>
+                  <force-top-level-object>true</force-top-level-object>
+                  <skip-whitespace>true</skip-whitespace>
+                  <trim-spaces>true</trim-spaces>
+                </driver>
+              </json-xml-transform-service>
+              <json-transform-service>
+                <unique-id>reformat-json</unique-id>
+                <source-json class="string-payload-data-input-parameter"/>
+                <mapping-spec class="constant-data-input-parameter">
+                  <value>[
+  {
+    &quot;operation&quot;: &quot;shift&quot;,
+    &quot;spec&quot;: {
+      &quot;spreadsheet&quot;: {
+        &quot;*&quot;: {
+          &quot;row&quot;: {
+            &quot;*&quot;: {
+              &quot;Issue_key&quot;: &quot;[&amp;1].issue-key&quot;,
+              &quot;Summary&quot;: &quot;[&amp;1].summary&quot;,
+              &quot;Story_Points&quot;: &quot;[&amp;1].story-points&quot;,
+              &quot;Issue_Type&quot;: &quot;[&amp;1].issue-type&quot;,
+              &quot;Updated&quot;: &quot;[&amp;1].updated&quot;,
+              &quot;Status&quot;: &quot;[&amp;1].status&quot;
+            }
+          }
+        }
+      }
+    }
+  }
+]
+</value>
+                </mapping-spec>
+                <target-json class="string-payload-data-output-parameter"/>
+                <metadata-filter class="remove-all-metadata-filter"/>
+              </json-transform-service>
+              <basic-message-splitter-service>
+                <unique-id>save-each-json-line</unique-id>
+                <splitter class="json-array-splitter"/>
+                <connection class="null-connection">
+                  <unique-id>pedantic-raman</unique-id>
+                </connection>
+                <producer class="fs-producer">
+                  <unique-id>berserk-archimedes</unique-id>
+                  <create-dirs>true</create-dirs>
+                  <fs-worker class="fs-nio-worker"/>
+                  <filename-creator class="formatted-filename-creator">
+                    <filename-format>%1$s</filename-format>
+                  </filename-creator>
+                  <base-directory-url>file://localhost/./messages/json-split-output/</base-directory-url>
+                </producer>
+              </basic-message-splitter-service>
+            </services>
+          </service-collection>
+          <producer class="fs-producer">
+            <unique-id>output</unique-id>
+            <create-dirs>true</create-dirs>
+            <fs-worker class="fs-nio-worker"/>
+            <filename-creator class="formatted-filename-creator">
+              <filename-format>%1$s.xml</filename-format>
+            </filename-creator>
+            <base-directory-url>file://localhost/./messages/json-output/</base-directory-url>
+          </producer>
+          <produce-exception-handler class="null-produce-exception-handler"/>
+          <unique-id>Process-Jira-Excel</unique-id>
+        </standard-workflow>
+      </workflow-list>
+      <unique-id>excel-processing</unique-id>
+    </channel>
+  </channel-list>
+  <message-error-digester class="standard-message-error-digester">
+    <unique-id>ErrorDigest</unique-id>
+    <digest-max-size>100</digest-max-size>
+  </message-error-digester>
+</adapter>
