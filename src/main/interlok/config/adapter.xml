@@ -107,7 +107,7 @@
                   <create-dirs>true</create-dirs>
                   <fs-worker class="fs-nio-worker"/>
                   <filename-creator class="formatted-filename-creator">
-                    <filename-format>%1$s</filename-format>
+                    <filename-format>%1$s.json</filename-format>
                   </filename-creator>
                   <base-directory-url>file://localhost/./messages/json-split-output/</base-directory-url>
                 </producer>
@@ -119,7 +119,7 @@
             <create-dirs>true</create-dirs>
             <fs-worker class="fs-nio-worker"/>
             <filename-creator class="formatted-filename-creator">
-              <filename-format>%1$s.xml</filename-format>
+              <filename-format>%1$s.json</filename-format>
             </filename-creator>
             <base-directory-url>file://localhost/./messages/json-output/</base-directory-url>
           </producer>
