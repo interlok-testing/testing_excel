@@ -1,0 +1,41 @@
+```plantuml
+@startuml
+folder folder [
+messages/excel-in
+]
+storage workflow {
+ usecase usecase [
+ fs-consumer
+ ]
+ rectangle rectangle1 [       
+ excel-to-xml-service
+ ]
+  rectangle rectangle2 [       
+ json-xml-transform-service
+ ]
+  rectangle rectangle3 [       
+ json-transform-service
+ ]
+  rectangle rectangle4 [       
+ basic-message-splitter-service
+ ]
+ usecase usecase2 [
+ fs-producer
+ ] 
+}
+folder folder2 [
+messages/json-split-output
+]
+folder folder3 [
+messages/json-output
+]
+folder -> usecase
+usecase -> rectangle1
+rectangle1 -> rectangle2
+rectangle2 -> rectangle3
+rectangle3 -> rectangle4
+rectangle4 -> usecase2
+usecase2 -> folder3
+rectangle4 --> folder2
+@enduml
+```
