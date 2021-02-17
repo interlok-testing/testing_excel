@@ -1,0 +1,103 @@
+<service-test>
+  <unique-id>jolly-keller</unique-id>
+  <test-client class="embedded-jmx-test-client">
+    <shared-components>
+      <connections/>
+      <services/>
+    </shared-components>
+    <shared-components-provider>
+      <services/>
+    </shared-components-provider>
+  </test-client>
+  <helpers/>
+  <test-list>
+    <unique-id>Process-Jira-Excel@excel-processing</unique-id>
+    <!-- <test>
+      <unique-id>excel-to-XML</unique-id>
+      <test-case>
+        <unique-id>test-xls-to-xml</unique-id>
+        <input-message-provider>
+          <metadata-provider class="empty-metadata-provider"/>
+          <payload-provider class="file-payload-provider">
+            <file>file:///${service.tester.working.directory}/src/test/resources/service-tester-excel-source.xls</file>
+          </payload-provider>
+        </input-message-provider>
+        <assertions>
+          <assert-payload-equals-file>
+            <file>file:///${service.tester.working.directory}/src/test/resources/service-tester-xml-output.xml</file>
+          </assert-payload-equals-file>
+        </assertions>
+      </test-case>
+      <service-to-test>
+        <source class="file-source">
+          <file>file:///${service.tester.working.directory}/src/main/interlok/config/adapter.xml</file>
+        </source>
+        <preprocessors>
+          <service-unique-id-preprocessor>
+            <channel>excel-processing</channel>
+            <workflow>Process-Jira-Excel</workflow>
+            <service>excel-to-XML</service>
+          </service-unique-id-preprocessor>
+        </preprocessors>
+      </service-to-test>
+    </test> -->
+    <test>
+      <unique-id>xml-to-json</unique-id>
+      <test-case>
+        <unique-id>test-xml-to-json</unique-id>
+        <input-message-provider>
+          <metadata-provider class="empty-metadata-provider"/>
+          <payload-provider class="file-payload-provider">
+            <file>file:///${service.tester.working.directory}/src/test/resources/service-tester-xml-output.xml</file>
+          </payload-provider>
+        </input-message-provider>
+        <assertions>
+          <assert-payload-equals-file>
+            <file>file:///${service.tester.working.directory}/src/test/resources/service-tester-json-output.json</file>
+          </assert-payload-equals-file>
+        </assertions>
+      </test-case>
+      <service-to-test>
+        <source class="file-source">
+          <file>file:///${service.tester.working.directory}/src/main/interlok/config/adapter.xml</file>
+        </source>
+        <preprocessors>
+          <service-unique-id-preprocessor>
+            <channel>excel-processing</channel>
+            <workflow>Process-Jira-Excel</workflow>
+            <service>xml-to-json</service>
+          </service-unique-id-preprocessor>
+        </preprocessors>
+      </service-to-test>
+    </test>
+    <test>
+      <unique-id>reformat-json</unique-id>
+      <test-case>
+        <unique-id>test-json-reformat</unique-id>
+        <input-message-provider>
+          <metadata-provider class="empty-metadata-provider"/>
+          <payload-provider class="file-payload-provider">
+            <file>file:///${service.tester.working.directory}/src/test/resources/service-tester-json-output.json</file>
+          </payload-provider>
+        </input-message-provider>
+        <assertions>
+          <assert-payload-equals-file>
+            <file>file:///${service.tester.working.directory}/src/test/resources/service-tester-json-formatted-output.json</file>
+          </assert-payload-equals-file>
+        </assertions>
+      </test-case>
+      <service-to-test>
+        <source class="file-source">
+          <file>file:///${service.tester.working.directory}/src/main/interlok/config/adapter.xml</file>
+        </source>
+        <preprocessors>
+          <service-unique-id-preprocessor>
+            <channel>excel-processing</channel>
+            <workflow>Process-Jira-Excel</workflow>
+            <service>reformat-json</service>
+          </service-unique-id-preprocessor>
+        </preprocessors>
+      </service-to-test>
+    </test>
+  </test-list>
+</service-test>

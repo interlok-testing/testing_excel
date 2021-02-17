@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<spreadsheet>
+   <sheet name="JIRA">
+      <row>
+         <Issue_key>INTERLOK-3710</Issue_key>
+         <Summary>UI - Support Jolokia http request in the UI</Summary>
+         <Story_Points>8.0</Story_Points>
+         <Issue_Type>Story</Issue_Type>
+         <Updated>2021-02-16T04:29:00+0000</Updated>
+         <Status>Open</Status>
+      </row>
+      <row>
+         <Issue_key>INTERLOK-3708</Issue_key>
+         <Summary>Rename interlok-fx-installer to interlok-installer</Summary>
+         <Story_Points>1.0</Story_Points>
+         <Issue_Type>Story</Issue_Type>
+         <Updated>2021-02-16T04:25:00+0000</Updated>
+         <Status>Open</Status>
+      </row>
+      <row>
+         <Issue_key>INTERLOK-3707</Issue_key>
+         <Summary>UI - create missing optional component icons</Summary>
+         <Story_Points>1.0</Story_Points>
+         <Issue_Type>Story</Issue_Type>
+         <Updated>2021-02-15T09:42:00+0000</Updated>
+         <Status>Closed</Status>
+      </row>
+      <row>
+         <Issue_key>INTERLOK-3705</Issue_key>
+         <Summary>Add Jetty Configurable Key Security Handler</Summary>
+         <Story_Points/>
+         <Issue_Type>Story</Issue_Type>
+         <Updated>2021-02-15T05:48:00+0000</Updated>
+         <Status>Open</Status>
+      </row>
+      <row>
+         <Issue_key>INTERLOK-3704</Issue_key>
+         <Summary>UI - Dependency vulnerabilities in shiro, httpclient and guava</Summary>
+         <Story_Points>1.0</Story_Points>
+         <Issue_Type>Story</Issue_Type>
+         <Updated>2021-02-14T06:05:00+0000</Updated>
+         <Status>Closed</Status>
+      </row>
+   </sheet>
+</spreadsheet>

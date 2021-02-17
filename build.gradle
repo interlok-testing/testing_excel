@@ -20,8 +20,10 @@ allprojects {
 dependencies {
   interlokRuntime ("com.adaptris:interlok-json:$interlokVersion") { changing=true }
   interlokRuntime ("com.adaptris:interlok-excel:$interlokVersion") { changing=true }
+  interlokRuntime ("com.adaptris:interlok-service-tester:$interlokVersion") { changing=true }
 
   interlokJavadocs group: "com.adaptris", name: "interlok-json", version: "$interlokVersion", classifier: "javadoc", changing: true, transitive: false
   interlokJavadocs group: "com.adaptris", name: "interlok-excel", version: "$interlokVersion", classifier: "javadoc", changing: true, transitive: false
+  interlokJavadocs group: "com.adaptris", name: "interlok-service-tester", version: "$interlokVersion", classifier: "javadoc", changing: true, transitive: false
 
 }
