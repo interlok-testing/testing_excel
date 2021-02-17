@@ -13,8 +13,47 @@ Project tests interlok-excel features
  - Then the json array is split up (one message per array element) and written to file using the basic-message-splitter-service
  - At the end of the workflow there is a fs-producer which outputs the json array to file
  
- ![workflow.puml](https://plantuml.proagrica-tooling.dev/proxy?cache=no&src=https://gitlab.agb.rbxd.ds/interlok/testing/excel-testing/-/raw/master/workflow.puml)
-
+ ```plantuml
+@startuml
+folder folder [
+messages/excel-in
+]
+storage workflow {
+ usecase usecase [
+ fs-consumer
+ ]
+ rectangle rectangle1 [       
+ excel-to-xml-service
+ ]
+  rectangle rectangle2 [       
+ json-xml-transform-service
+ ]
+  rectangle rectangle3 [       
+ json-transform-service
+ ]
+  rectangle rectangle4 [       
+ basic-message-splitter-service
+ ]
+ usecase usecase2 [
+ fs-producer
+ ] 
+}
+folder folder2 [
+messages/json-split-output
+]
+folder folder3 [
+messages/json-output
+]
+folder -> usecase
+usecase -> rectangle1
+rectangle1 -> rectangle2
+rectangle2 -> rectangle3
+rectangle3 -> rectangle4
+rectangle4 -> usecase2
+usecase2 -> folder3
+rectangle4 --> folder2
+@enduml
+```
  
 ## Getting started
 
