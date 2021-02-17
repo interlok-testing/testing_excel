@@ -13,7 +13,7 @@ Project tests interlok-excel features
  - Then the json array is split up (one message per array element) and written to file using the basic-message-splitter-service
  - At the end of the workflow there is a fs-producer which outputs the json array to file
  
- ![workflow.puml](https://plantuml.proagrica-tooling.dev/proxy?cache=no&src=https://gitlab.agb.rbxd.ds/interlok/testing/excel-testing/-/tree/master/workflow.puml)
+ ![workflow.puml](https://plantuml.proagrica-tooling.dev/proxy?cache=no&src=https://gitlab.agb.rbxd.ds/interlok/testing/excel-testing/-/raw/master/workflow.puml)
 
  
 ## Getting started
