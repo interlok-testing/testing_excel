@@ -125,7 +125,7 @@ json-xml-transform-service transforms this xml to json:
                "Issue_key":"INTERLOK-3705",
                "Summary":"Add Jetty Configurable Key Security Handler",
                "Story_Points":[
-                  
+
                ],
                "Issue_Type":"Story",
                "Updated":"2021-02-15T05:48:00+0000",
@@ -148,6 +148,7 @@ json-xml-transform-service transforms this xml to json:
 the json-transform-service then reformats the json:
 
 using jolt mapping spec:
+
 ```json
   {
     "operation": "shift",
@@ -171,6 +172,7 @@ using jolt mapping spec:
 ```
 
 json output:
+
 ```json
 [
    {

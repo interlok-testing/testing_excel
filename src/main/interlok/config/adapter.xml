@@ -123,7 +123,6 @@
             </filename-creator>
             <base-directory-url>file://localhost/./messages/json-output/</base-directory-url>
           </producer>
-          <produce-exception-handler class="null-produce-exception-handler"/>
           <unique-id>Process-Jira-Excel</unique-id>
         </standard-workflow>
       </workflow-list>
