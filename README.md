@@ -1,5 +1,8 @@
 # Excel Testing
 
+[![license](https://img.shields.io/github/license/interlok-testing/testing_excel.svg)](https://github.com/interlok-testing/testing_excel/blob/develop/LICENSE)
+[![Actions Status](https://github.com/interlok-testing/testing_excel/actions/workflows/gradle-build.yml/badge.svg)](https://github.com/interlok-testing/testing_excel/actions/workflows/gradle-build.yml)
+
 Project tests interlok-excel features
 
 ## What it does
